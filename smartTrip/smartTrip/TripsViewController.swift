@@ -12,26 +12,24 @@ class TripsViewController: UITableViewController {
     
     var tripList = SampleData.generateTripsData()
     
-    @IBAction func cancelToPlayersViewController(segue: UIStoryboardSegue) {}
+    @IBAction func cancelToTripsViewController(segue: UIStoryboardSegue) {
+    }
     
-    @IBAction func savePlayerDetail(segue: UIStoryboardSegue) {}
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    @IBAction func saveTripDetail(_ segue: UIStoryboardSegue) {
+        
+        guard let TripDetailsViewController = segue.source as? TripDetailsViewController,
+            let trip = TripDetailsViewController.trip else { return }
+        
+        // add the new trip to the tripList array
+        tripList.append(trip)
+        
+        // update the tableView
+        let indexPath = IndexPath(row: tripList.count - 1, section: 0)
+        tableView.insertRows(at: [indexPath], with: .automatic)
     }
+    
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections

@@ -10,12 +10,54 @@ import UIKit
 
 class TripDetailsViewController: UITableViewController {
 
+    
+    
+    @IBOutlet weak var destTF: UITextField!
+    @IBOutlet weak var leaveDate: UIDatePicker!
+    @IBOutlet weak var retDate: UIDatePicker!
+    
+    // MARK: - Initializers
+    required init?(coder aDecoder: NSCoder) {
+        print("init TripDetailsViewController")
+        super.init(coder: aDecoder)
+    }
+    
+    deinit {
+        print("deinit TripDetailsViewController")
+    }
+
+
+    
+    var trip: Trip?
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "saveTripDetail",
+            let tripName = destTF.text{
+           
+            
+            let dateFormatter = DateFormatter()
+            
+            dateFormatter.dateStyle = DateFormatter.Style.short
+            dateFormatter.timeStyle = DateFormatter.Style.none
+            
+            let leaveDay = dateFormatter.string(from: leaveDate.date)
+            let returnDay = dateFormatter.string(from: retDate.date)
+            
+            
+            trip = Trip(destination: tripName, depDate: leaveDay, backDate: returnDay, bgImage: "defualt" )
+           
+        }
+       
+    
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-
+        
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
@@ -94,4 +136,14 @@ class TripDetailsViewController: UITableViewController {
     }
     */
 
+}
+
+// MARK: - UITableViewDelegate
+extension TripDetailsViewController {
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if indexPath.section == 0 {
+            destTF.becomeFirstResponder()
+        }
+    }
 }
