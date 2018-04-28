@@ -14,3 +14,5 @@ struct Trip {
     var backDate: String?
     var bgImage: String?
 }
+
+

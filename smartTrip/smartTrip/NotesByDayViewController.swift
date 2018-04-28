@@ -10,9 +10,18 @@ import UIKit
 
 class NotesByDayViewController: UITableViewController {
     
-    var numberOfDays:Int = 5
+  
     
+    var numberOfDays:Int = 0
+    var cellLabels:[String] = []
     
+    @IBAction func cancelToNotesByDayViewController(segue: UIStoryboardSegue) {
+    }
+    
+    @IBAction func saveNotes(segue: UIStoryboardSegue) {
+        
+    }
+  
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,10 +55,13 @@ class NotesByDayViewController: UITableViewController {
 
         // Configure the cell...
         
-        for i in 0...numberOfDays {
-            cell.textLabel?.text = "Day " + String(i)
+        for i in 1...numberOfDays {
+            let text = "Day " + String(i)
+            cellLabels.append(text)
+            cell.textLabel?.text = cellLabels[indexPath.row]
         }
-
+       
+        
         return cell
     }
 

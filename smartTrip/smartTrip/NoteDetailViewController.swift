@@ -1,83 +1,24 @@
 //
-//  TripDetailsViewController.swift
+//  NoteDetailViewController.swift
 //  smartTrip
 //
-//  Created by Sharry Tong on 4/25/18.
+//  Created by Sharry Tong on 4/28/18.
 //  Copyright © 2018 Sharry Tong. All rights reserved.
 //
 
 import UIKit
 
-class TripDetailsViewController: UITableViewController {
+class NoteDetailViewController: UITableViewController {
 
-  
-    
-    @IBOutlet weak var destTF: UITextField!
-    @IBOutlet weak var leaveDate: UIDatePicker!
-    @IBOutlet weak var retDate: UIDatePicker!
-    
-   
-    
-    // MARK: - Initializers
-    required init?(coder aDecoder: NSCoder) {
-        print("init TripDetailsViewController")
-        super.init(coder: aDecoder)
-    }
-    
-    deinit {
-        print("deinit TripDetailsViewController")
-    }
-
-
-    
-    var trip: Trip?
-    
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "saveTripDetail",
-            let tripName = destTF.text{
-        
-            let dateFormatter = DateFormatter()
-    
-            
-            dateFormatter.dateStyle = DateFormatter.Style.short
-            dateFormatter.timeStyle = DateFormatter.Style.none
-            
-            let leaveDay = dateFormatter.string(from: leaveDate.date)
-            let returnDay = dateFormatter.string(from: retDate.date)
-            
-            
-            trip = Trip(destination: tripName, depDate: leaveDay, backDate: returnDay, bgImage: "defualt" )
-           
-        }
-       
-        if segue.identifier == "PickDay"{
-            let NotesByDayViewController = segue.destination as! NotesByDayViewController
-            let dayOne = leaveDate.date
-            let dayTwo = retDate.date
-            
-            let diffInDays = Calendar.current.dateComponents([.day], from: dayOne, to: dayTwo).day
-            NotesByDayViewController.numberOfDays = diffInDays! + 2
-            print(diffInDays! + 2)
-            
-        }
-    
-    }
-    
-
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
-        
+
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
-    
-      /*
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -96,7 +37,7 @@ class TripDetailsViewController: UITableViewController {
         return 0
     }
 
-  
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
@@ -151,14 +92,4 @@ class TripDetailsViewController: UITableViewController {
     }
     */
 
-}
-
-// MARK: - UITableViewDelegate
-extension TripDetailsViewController {
-    
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        if indexPath.section == 0 {
-            destTF.becomeFirstResponder()
-        }
-    }
 }

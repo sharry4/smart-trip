@@ -14,7 +14,6 @@ class TripsViewController: UITableViewController {
     
     @IBAction func cancelToTripsViewController(segue: UIStoryboardSegue) {
     }
-    
 
     @IBAction func saveTripDetail(_ segue: UIStoryboardSegue) {
         
@@ -28,6 +27,8 @@ class TripsViewController: UITableViewController {
         let indexPath = IndexPath(row: tripList.count - 1, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
+    
+
     
 
 
