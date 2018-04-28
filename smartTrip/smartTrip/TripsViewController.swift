@@ -21,10 +21,10 @@ class TripsViewController: UITableViewController {
             let trip = TripDetailsViewController.trip else { return }
         
         // add the new trip to the tripList array
-        tripList.append(trip)
+        tripList.insert(trip,  at: 0)
         
         // update the tableView
-        let indexPath = IndexPath(row: tripList.count - 1, section: 0)
+        let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
     }
     
