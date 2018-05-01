@@ -11,14 +11,27 @@ import UIKit
 class TripsViewController: UITableViewController {
     
     var tripList = SampleData.generateTripsData()
+    var curTrip:Trip?
+    
+   
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?){
+        if segue.identifier == "ShowTripSegue"{
+            if let indexPath = self.tableView.indexPathForSelectedRow{
+                let showTripViewController = segue.destination as! ShowTripViewController
+                curTrip = tripList[indexPath.row]
+                showTripViewController.trip = curTrip
+            }
+        }
+    }
     
     @IBAction func cancelToTripsViewController(segue: UIStoryboardSegue) {
     }
 
     @IBAction func saveTripDetail(_ segue: UIStoryboardSegue) {
         
-        guard let TripDetailsViewController = segue.source as? TripDetailsViewController,
-            let trip = TripDetailsViewController.trip else { return }
+        guard let tripDetailsViewController = segue.source as? TripDetailsViewController,
+            let trip = tripDetailsViewController.trip else { return }
         
         // add the new trip to the tripList array
         tripList.insert(trip,  at: 0)
@@ -52,7 +65,6 @@ class TripsViewController: UITableViewController {
 
         return cell
     }
- 
 
     /*
     // Override to support conditional editing of the table view.

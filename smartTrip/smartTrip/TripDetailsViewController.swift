@@ -8,22 +8,50 @@
 
 import UIKit
 
-class TripDetailsViewController: UITableViewController {
+class TripDetailsViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
   
+    @IBAction func importImage(_ sender: Any) {
+        let image = UIImagePickerController()
+        image.delegate = self
+        image.sourceType = UIImagePickerControllerSourceType.photoLibrary
+        
+        image.allowsEditing = false
+        
+        self.present(image, animated: true)
+        {
+            //after complete
+            
+        }
+    }
+    
+    
+    @IBOutlet weak var destPhoto: UIImageView!
     
     @IBOutlet weak var destTF: UITextField!
     @IBOutlet weak var leaveDate: UIDatePicker!
     @IBOutlet weak var retDate: UIDatePicker!
     
-   
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
+        {
+            destPhoto.image = image
+        } else
+        {
+            //error
+        }
+        
+        self.dismiss(animated: true, completion: nil)
+    }
+    
+    
     
     // MARK: - Initializers
     required init?(coder aDecoder: NSCoder) {
         print("init TripDetailsViewController")
         super.init(coder: aDecoder)
     }
-    
+
     deinit {
         print("deinit TripDetailsViewController")
     }
@@ -31,37 +59,60 @@ class TripDetailsViewController: UITableViewController {
 
     
     var trip: Trip?
-    
+    var note: Note?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "saveTripDetail",
-            let tripName = destTF.text{
         
-            let dateFormatter = DateFormatter()
-    
+        let tripName = destTF.text
+        let dateFormatter = DateFormatter()
+        
+        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.timeStyle = DateFormatter.Style.none
+        
+        let leaveDay = dateFormatter.string(from: leaveDate.date)
+        let returnDay = dateFormatter.string(from: retDate.date)
+        let bgImage = destPhoto.image
+        
+        trip = Trip(destination: tripName, depDate: leaveDay, backDate: returnDay, bgImage: bgImage, notes:[])
+        
+        
+        
+        
+        
+        if segue.identifier == "saveTripDetail" {
+            let notesByDayViewController = segue.source as? NotesByDayViewController
+            if trip != nil {
+                trip!.notes = notesByDayViewController!.trip!.notes
+                
+            }
             
-            dateFormatter.dateStyle = DateFormatter.Style.short
-            dateFormatter.timeStyle = DateFormatter.Style.none
-            
-            let leaveDay = dateFormatter.string(from: leaveDate.date)
-            let returnDay = dateFormatter.string(from: retDate.date)
-            
-            
-            trip = Trip(destination: tripName, depDate: leaveDay, backDate: returnDay, bgImage: "defualt" )
-           
+//
+        
+            print("trip save:", trip)
         }
-       
+        
         if segue.identifier == "PickDay"{
-            let NotesByDayViewController = segue.destination as! NotesByDayViewController
+            
+            
             let dayOne = leaveDate.date
             let dayTwo = retDate.date
             
+            let notesByDayViewController = segue.destination as! NotesByDayViewController
             let diffInDays = Calendar.current.dateComponents([.day], from: dayOne, to: dayTwo).day
-            NotesByDayViewController.numberOfDays = diffInDays! + 2
+            notesByDayViewController.numberOfDays = diffInDays! + 2
             print(diffInDays! + 2)
             
+            // prepare place holder for notes array
+            for i in 1...notesByDayViewController.numberOfDays {
+                note = Note(activity: "", food: "", more: "")
+                trip?.notes.append(note!)
+            }
+            
+            notesByDayViewController.trip = trip
+            print("trip:", trip)
         }
-    
+        
+        
     }
     
 
@@ -162,3 +213,5 @@ extension TripDetailsViewController {
         }
     }
 }
+
+

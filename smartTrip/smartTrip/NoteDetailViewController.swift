@@ -9,6 +9,30 @@
 import UIKit
 
 class NoteDetailViewController: UITableViewController {
+    
+    
+    @IBOutlet weak var activityNotes: UITextView!
+    @IBOutlet weak var foodNotes: UITextView!
+    @IBOutlet weak var moreNotes: UITextView!
+    
+    
+    var note: Note?
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        
+        if segue.identifier == "saveNotes"{
+            
+            let actNote = activityNotes.text
+            let foodNote = foodNotes.text
+            let moreNote = moreNotes.text
+            
+            note = Note(activity: actNote, food: foodNote, more: moreNote)
+        
+        }
+        
+        
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +43,8 @@ class NoteDetailViewController: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
+/*
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -35,7 +61,7 @@ class NoteDetailViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
-    }
+    }*/
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

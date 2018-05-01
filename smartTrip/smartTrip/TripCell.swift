@@ -22,7 +22,7 @@ class TripCell: UITableViewCell {
             
             destinationLabel.text = trip.destination
             durationLabel.text = trip.depDate! + " - " + trip.backDate!
-            tripImageView.image = image(forBackground: trip.bgImage!)
+            tripImageView.image = trip.bgImage
         }
     }
     

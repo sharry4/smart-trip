@@ -11,15 +11,49 @@ import UIKit
 class NotesByDayViewController: UITableViewController {
     
   
-    
     var numberOfDays:Int = 0
     var cellLabels:[String] = []
+    
+    var trip: Trip?
+    var note: Note?
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "DaySelect"{
+//            for i in 1...numberOfDays {
+//
+//                note = Note(activity: "", food: "", more: "")
+//
+//                trip?.notes.append(note!)
+//                
+////                trip?.notes[i].activity = ""
+////                trip?.notes[i].food = ""
+////                trip?.notes[i].more = ""
+//
+//
+//            }
+//
+//        }
+//
+//        print("trip:", trip)
+//    }
     
     @IBAction func cancelToNotesByDayViewController(segue: UIStoryboardSegue) {
     }
     
     @IBAction func saveNotes(segue: UIStoryboardSegue) {
+        guard let noteDetailViewController = segue.source as? NoteDetailViewController,
+            let note = noteDetailViewController.note else { return }
         
+        if let indexPath = self.tableView.indexPathForSelectedRow{
+            trip!.notes[indexPath.row] = note
+        }
+        
+        print("trip notes:", trip!.notes)
+        
+        
+
+//        print("trip3:", trip!.notes)
     }
   
 
@@ -51,6 +85,7 @@ class NotesByDayViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+       
         let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath)
 
         // Configure the cell...

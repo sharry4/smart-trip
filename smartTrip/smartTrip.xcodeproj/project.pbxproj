@@ -11,6 +11,7 @@
 		221C02542087D862003418FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221C02522087D862003418FB /* Main.storyboard */; };
 		221C02562087D863003418FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221C02552087D863003418FB /* Assets.xcassets */; };
 		221C02592087D863003418FB /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221C02572087D863003418FB /* LaunchScreen.storyboard */; };
+		2262950B2097BD240001A3B1 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2262950A2097BD240001A3B1 /* Note.swift */; };
 		2264E574209261310040D672 /* NotesByDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264E573209261310040D672 /* NotesByDayViewController.swift */; };
 		2264E5782094400D0040D672 /* NoteDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2264E5772094400D0040D672 /* NoteDetailViewController.swift */; };
 		22BB713220910AAC004018A9 /* Trip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB713120910AAC004018A9 /* Trip.swift */; };
@@ -18,6 +19,7 @@
 		22BB713620910E95004018A9 /* TripsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB713520910E95004018A9 /* TripsViewController.swift */; };
 		22BB713820911BCB004018A9 /* TripCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB713720911BCB004018A9 /* TripCell.swift */; };
 		22BB713A209130A9004018A9 /* TripDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22BB7139209130A9004018A9 /* TripDetailsViewController.swift */; };
+		2CF0A7AC2095458D0058C76B /* ShowTripViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF0A7AB2095458D0058C76B /* ShowTripViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +29,7 @@
 		221C02552087D863003418FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		221C02582087D863003418FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		221C025A2087D864003418FB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2262950A2097BD240001A3B1 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		2264E573209261310040D672 /* NotesByDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesByDayViewController.swift; sourceTree = "<group>"; };
 		2264E5772094400D0040D672 /* NoteDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoteDetailViewController.swift; sourceTree = "<group>"; };
 		22BB713120910AAC004018A9 /* Trip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Trip.swift; sourceTree = "<group>"; };
@@ -34,6 +37,7 @@
 		22BB713520910E95004018A9 /* TripsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripsViewController.swift; sourceTree = "<group>"; };
 		22BB713720911BCB004018A9 /* TripCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripCell.swift; sourceTree = "<group>"; };
 		22BB7139209130A9004018A9 /* TripDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripDetailsViewController.swift; sourceTree = "<group>"; };
+		2CF0A7AB2095458D0058C76B /* ShowTripViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTripViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -68,12 +72,14 @@
 			children = (
 				221C024E2087D862003418FB /* AppDelegate.swift */,
 				221C02522087D862003418FB /* Main.storyboard */,
+				2CF0A7AB2095458D0058C76B /* ShowTripViewController.swift */,
 				2264E5772094400D0040D672 /* NoteDetailViewController.swift */,
 				2264E573209261310040D672 /* NotesByDayViewController.swift */,
 				22BB7139209130A9004018A9 /* TripDetailsViewController.swift */,
 				22BB713520910E95004018A9 /* TripsViewController.swift */,
 				22BB713720911BCB004018A9 /* TripCell.swift */,
 				22BB713120910AAC004018A9 /* Trip.swift */,
+				2262950A2097BD240001A3B1 /* Note.swift */,
 				22BB713320910E2A004018A9 /* SampleData.swift */,
 				221C02552087D863003418FB /* Assets.xcassets */,
 				221C02572087D863003418FB /* LaunchScreen.storyboard */,
@@ -158,6 +164,8 @@
 				221C024F2087D862003418FB /* AppDelegate.swift in Sources */,
 				22BB713220910AAC004018A9 /* Trip.swift in Sources */,
 				22BB713A209130A9004018A9 /* TripDetailsViewController.swift in Sources */,
+				2262950B2097BD240001A3B1 /* Note.swift in Sources */,
+				2CF0A7AC2095458D0058C76B /* ShowTripViewController.swift in Sources */,
 				22BB713420910E2A004018A9 /* SampleData.swift in Sources */,
 				22BB713820911BCB004018A9 /* TripCell.swift in Sources */,
 				22BB713620910E95004018A9 /* TripsViewController.swift in Sources */,
