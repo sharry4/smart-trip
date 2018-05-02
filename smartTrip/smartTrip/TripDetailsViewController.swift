@@ -61,6 +61,14 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
     var trip: Trip?
     var note: Note?
     
+    @IBAction func unwindWithSelectedDate(segue: UIStoryboardSegue){
+        
+        let notesByDayViewController = segue.source as? NotesByDayViewController
+        trip!.notes = notesByDayViewController!.trip!.notes
+    
+        print("saved trip:", trip)
+    }
+    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let tripName = destTF.text
@@ -73,23 +81,23 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
         let returnDay = dateFormatter.string(from: retDate.date)
         let bgImage = destPhoto.image
         
+        
         trip = Trip(destination: tripName, depDate: leaveDay, backDate: returnDay, bgImage: bgImage, notes:[])
         
         
         
         
         
-        if segue.identifier == "saveTripDetail" {
-            let notesByDayViewController = segue.source as? NotesByDayViewController
-            if trip != nil {
-                trip!.notes = notesByDayViewController!.trip!.notes
-                
-            }
-            
+//        if segue.identifier == "saveTripDetail" {
+//            let notesByDayViewController = segue.source as? NotesByDayViewController
+//            if trip != nil {
 //
-        
-            print("trip save:", trip)
-        }
+//
+//            }
+//            
+//          print("trip save:", trip)
+            
+//        }
         
         if segue.identifier == "PickDay"{
             
@@ -114,6 +122,8 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
         
         
     }
+    
+    
     
 
     

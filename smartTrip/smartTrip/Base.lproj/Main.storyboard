@@ -279,10 +279,14 @@
                             <outlet property="delegate" destination="2hb-el-bhh" id="wgX-GR-Hur"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <segue destination="Ms4-Ol-q6c" kind="unwind" identifier="exitToTripDetail" unwindAction="unwindWithSelectedDateWithSegue:" id="b3M-hs-hiM"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S8G-Gr-CM2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Ms4-Ol-q6c" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="3353" y="867"/>
+            <point key="canvasLocation" x="3332" y="867"/>
         </scene>
         <!--Add Notes-->
         <scene sceneID="mLb-Tj-e1I">

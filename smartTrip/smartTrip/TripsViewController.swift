@@ -33,6 +33,8 @@ class TripsViewController: UITableViewController {
         guard let tripDetailsViewController = segue.source as? TripDetailsViewController,
             let trip = tripDetailsViewController.trip else { return }
         
+        
+        
         // add the new trip to the tripList array
         tripList.insert(trip,  at: 0)
         
