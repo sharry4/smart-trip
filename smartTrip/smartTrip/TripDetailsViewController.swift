@@ -60,14 +60,8 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
     
     var trip: Trip?
     var note: Note?
+    var tripNotes: [Note] = [Note(activity: "", food: "", more: "")]
     
-    @IBAction func unwindWithSelectedDate(segue: UIStoryboardSegue){
-        
-        let notesByDayViewController = segue.source as? NotesByDayViewController
-        trip!.notes = notesByDayViewController!.trip!.notes
-    
-        print("saved trip:", trip)
-    }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
@@ -82,7 +76,7 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
         let bgImage = destPhoto.image
         
         
-        trip = Trip(destination: tripName, depDate: leaveDay, backDate: returnDay, bgImage: bgImage, notes:[])
+        trip = Trip(destination: tripName, depDate: leaveDay, backDate: returnDay, bgImage: bgImage, notes:tripNotes)
         
         
         
@@ -107,11 +101,12 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
             
             let notesByDayViewController = segue.destination as! NotesByDayViewController
             let diffInDays = Calendar.current.dateComponents([.day], from: dayOne, to: dayTwo).day
-            notesByDayViewController.numberOfDays = diffInDays! + 2
-            print(diffInDays! + 2)
+            let numberOfDays = diffInDays! + 2
+            notesByDayViewController.numberOfDays = numberOfDays
+            print(numberOfDays)
             
             // prepare place holder for notes array
-            for i in 1...notesByDayViewController.numberOfDays {
+            for i in 1...(numberOfDays - 1) {
                 note = Note(activity: "", food: "", more: "")
                 trip?.notes.append(note!)
             }
@@ -214,6 +209,20 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
 
 }
 
+// MARK: - IBActions
+extension TripDetailsViewController {
+    
+    @IBAction func unwindWithSelectedDate(segue: UIStoryboardSegue){
+        
+        let notesByDayViewController = segue.source as? NotesByDayViewController
+        tripNotes = notesByDayViewController!.trip!.notes
+        
+        print("saved trip:", trip)
+    }
+}
+
+
+
 // MARK: - UITableViewDelegate
 extension TripDetailsViewController {
     
@@ -223,5 +232,7 @@ extension TripDetailsViewController {
         }
     }
 }
+
+
 
 
