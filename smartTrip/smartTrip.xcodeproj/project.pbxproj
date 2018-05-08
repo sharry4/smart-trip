@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		220EFDB220A2230000DA5B71 /* ShowNotesByDayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EFDB120A2230000DA5B71 /* ShowNotesByDayViewController.swift */; };
+		220EFDB620A241B100DA5B71 /* ShowNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220EFDB520A241B100DA5B71 /* ShowNoteViewController.swift */; };
 		221C024F2087D862003418FB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C024E2087D862003418FB /* AppDelegate.swift */; };
 		221C02542087D862003418FB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 221C02522087D862003418FB /* Main.storyboard */; };
 		221C02562087D863003418FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 221C02552087D863003418FB /* Assets.xcassets */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		220EFDB120A2230000DA5B71 /* ShowNotesByDayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNotesByDayViewController.swift; sourceTree = "<group>"; };
+		220EFDB520A241B100DA5B71 /* ShowNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNoteViewController.swift; sourceTree = "<group>"; };
 		221C024B2087D862003418FB /* smartTrip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = smartTrip.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		221C024E2087D862003418FB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		221C02532087D862003418FB /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,6 +77,8 @@
 				221C024E2087D862003418FB /* AppDelegate.swift */,
 				221C02522087D862003418FB /* Main.storyboard */,
 				2CF0A7AB2095458D0058C76B /* ShowTripViewController.swift */,
+				220EFDB120A2230000DA5B71 /* ShowNotesByDayViewController.swift */,
+				220EFDB520A241B100DA5B71 /* ShowNoteViewController.swift */,
 				2264E5772094400D0040D672 /* NoteDetailViewController.swift */,
 				2264E573209261310040D672 /* NotesByDayViewController.swift */,
 				22BB7139209130A9004018A9 /* TripDetailsViewController.swift */,
@@ -160,9 +166,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				2264E574209261310040D672 /* NotesByDayViewController.swift in Sources */,
+				220EFDB220A2230000DA5B71 /* ShowNotesByDayViewController.swift in Sources */,
 				2264E5782094400D0040D672 /* NoteDetailViewController.swift in Sources */,
 				221C024F2087D862003418FB /* AppDelegate.swift in Sources */,
 				22BB713220910AAC004018A9 /* Trip.swift in Sources */,
+				220EFDB620A241B100DA5B71 /* ShowNoteViewController.swift in Sources */,
 				22BB713A209130A9004018A9 /* TripDetailsViewController.swift in Sources */,
 				2262950B2097BD240001A3B1 /* Note.swift in Sources */,
 				2CF0A7AC2095458D0058C76B /* ShowTripViewController.swift in Sources */,

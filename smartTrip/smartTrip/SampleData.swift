@@ -11,8 +11,8 @@ import Foundation
 final class SampleData {
     static func generateTripsData() -> [Trip] {
         return[
-            Trip(destination: "New York", depDate: "May 4, 2018", backDate: "May 7, 2018", bgImage:#imageLiteral(resourceName: "default"), notes:[Note(activity: "", food: "", more: ""), Note(activity: "", food: "", more: "")]),
-            Trip(destination: "Miami", depDate:"May 1, 2018", backDate: "May 3, 2018", bgImage:#imageLiteral(resourceName: "default"), notes:[Note(activity: "", food: "", more: "")] )
+            Trip(destination: "New York", depDate: "May 4, 2018", backDate: "May 7, 2018", bgImage:#imageLiteral(resourceName: "default"), notes:[Note(activity: "", food: "", more: ""), Note(activity: "", food: "", more: ""), Note(activity: "", food: "", more: ""), Note(activity: "", food: "", more: ""), Note(activity: "", food: "", more: ""), Note(activity: "", food: "", more: "")]),
+            Trip(destination: "Miami", depDate:"May 1, 2018", backDate: "May 3, 2018", bgImage:#imageLiteral(resourceName: "default"), notes:[Note(activity: "", food: "", more: ""), Note(activity: "", food: "", more: ""), Note(activity: "", food: "", more: ""), Note(activity: "", food: "", more: ""), Note(activity: "", food: "", more: "")] )
             
         ]
     }

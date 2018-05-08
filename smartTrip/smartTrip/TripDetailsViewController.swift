@@ -8,7 +8,16 @@
 
 import UIKit
 
-class TripDetailsViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class TripDetailsViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NoteDelegate {
+    
+    
+    func saveTripsInNotesByDay(trip: Trip) {
+        print("TripDetailsVC: saveTripsInNotesByDay")
+        print("Back in TripDetails", trip)
+        
+        tripNotes = trip.notes
+    }
+    
 
   
     @IBAction func importImage(_ sender: Any) {
@@ -62,19 +71,24 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
     var note: Note?
     var tripNotes: [Note] = [Note(activity: "", food: "", more: "")]
     
+//    var curTrip:Trip?
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         let tripName = destTF.text
         let dateFormatter = DateFormatter()
         
-        dateFormatter.dateStyle = DateFormatter.Style.short
+        dateFormatter.dateStyle = DateFormatter.Style.medium
         dateFormatter.timeStyle = DateFormatter.Style.none
+        dateFormatter.locale = Locale(identifier: "en_US")
+//        dateFormatter.dateFormat = "MMM dd, yyyy"
+        
         
         let leaveDay = dateFormatter.string(from: leaveDate.date)
         let returnDay = dateFormatter.string(from: retDate.date)
         let bgImage = destPhoto.image
         
+ 
         
         trip = Trip(destination: tripName, depDate: leaveDay, backDate: returnDay, bgImage: bgImage, notes:tripNotes)
         
@@ -112,6 +126,7 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
             }
             
             notesByDayViewController.trip = trip
+            notesByDayViewController.noteDelegate = self
             print("trip:", trip)
         }
         
@@ -119,12 +134,28 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
     }
     
     
-    
-
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+//        print("curtrip:", curTrip)
+//
+//        if let destination = curTrip?.destination{
+//            destTF.text = destination
+//        }
+//
+////        if let depDate = trip!.depDate{
+////            dateOne.text = depDate
+////        }
+////
+////        if let backDate = trip!.backDate{
+////            dateTwo.text = backDate
+////        }
+//
+//        if let bgImage = curTrip?.bgImage{
+//            destPhoto.image = bgImage
+//        }
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -210,27 +241,28 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
 }
 
 // MARK: - IBActions
-extension TripDetailsViewController {
-    
-    @IBAction func unwindWithSelectedDate(segue: UIStoryboardSegue){
-        
-        let notesByDayViewController = segue.source as? NotesByDayViewController
-        tripNotes = notesByDayViewController!.trip!.notes
-        
-        print("saved trip:", trip)
-    }
-}
+//extension TripDetailsViewController {
+//
+//    @IBAction func unwindWithSelectedDate(segue: UIStoryboardSegue){
+//
+//        let notesByDayViewController = segue.source as? NotesByDayViewController
+//        tripNotes = notesByDayViewController!.trip!.notes
+//
+//        print("saved trip:", trip)
+//    }
+//}
+
 
 
 
 // MARK: - UITableViewDelegate
 extension TripDetailsViewController {
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         if indexPath.section == 0 {
             destTF.becomeFirstResponder()
         }
     }
+
 }
 
 

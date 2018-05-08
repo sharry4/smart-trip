@@ -1,75 +1,29 @@
 //
-//  NotesByDayViewController.swift
+//  ShowNoteViewController.swift
 //  smartTrip
 //
-//  Created by Sharry Tong on 4/26/18.
+//  Created by Sharry Tong on 5/8/18.
 //  Copyright © 2018 Sharry Tong. All rights reserved.
 //
 
 import UIKit
 
-protocol NoteDelegate {
-    func saveTripsInNotesByDay(trip: Trip)
-}
-
-class NotesByDayViewController: UITableViewController {
+class ShowNoteViewController: UITableViewController {
     
-  
-    var numberOfDays:Int = 0
-    var cellLabels:[String] = []
     
-    var trip: Trip?
-    var note: Note?
+    @IBOutlet weak var activityNote: UITextView!
+    @IBOutlet weak var foodNote: UITextView!
+    @IBOutlet weak var moreNote: UITextView!
     
-    var noteDelegate: NoteDelegate?
-    
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "DaySelect"{
-//            for i in 1...numberOfDays {
-//
-//                note = Note(activity: "", food: "", more: "")
-//
-//                trip?.notes.append(note!)
-//                
-////                trip?.notes[i].activity = ""
-////                trip?.notes[i].food = ""
-////                trip?.notes[i].more = ""
-//
-//
-//            }
-//
-//        }
-//
-//        print("trip:", trip)
-//    }
-    
-    @IBAction func cancelToNotesByDayViewController(segue: UIStoryboardSegue) {
-    }
-    
-    @IBAction func saveNotes(segue: UIStoryboardSegue) {
-        guard let noteDetailViewController = segue.source as? NoteDetailViewController,
-            let note = noteDetailViewController.note else { return }
-        
-        if let indexPath = self.tableView.indexPathForSelectedRow{
-            trip!.notes[indexPath.row] = note
-        }
-        
-        noteDelegate?.saveTripsInNotesByDay(trip: trip!)
-        print("call saveTripsInNotesByDay in NotesVC")
-        print("trip notes:", trip!.notes)
-        
-        let tripDetailsViewController = segue.destination as? TripDetailsViewController
-        
-        tripDetailsViewController?.tripNotes = trip!.notes
-        
-
-
-    }
-  
+    var note:Note?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        activityNote.text = note?.activity
+        foodNote.text = note?.food
+        moreNote.text = note?.more
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -78,6 +32,9 @@ class NotesByDayViewController: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
+
+    
+    /*
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -87,29 +44,24 @@ class NotesByDayViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 1
+        return 0
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return numberOfDays
+        return 0
     }
+    */
 
+    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       
-        let cell = tableView.dequeueReusableCell(withIdentifier: "DayCell", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
         // Configure the cell...
-        
-        for i in 1...numberOfDays {
-            let text = "Day " + String(i)
-            cellLabels.append(text)
-            cell.textLabel?.text = cellLabels[indexPath.row]
-        }
-       
-        
+
         return cell
     }
+    */
 
     /*
     // Override to support conditional editing of the table view.

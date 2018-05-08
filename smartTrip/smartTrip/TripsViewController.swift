@@ -19,8 +19,12 @@ class TripsViewController: UITableViewController {
         if segue.identifier == "ShowTripSegue"{
             if let indexPath = self.tableView.indexPathForSelectedRow{
                 let showTripViewController = segue.destination as! ShowTripViewController
+//                 let tripDetailsViewController = segue.destination as! TripDetailsViewController
                 curTrip = tripList[indexPath.row]
+                print("curTrip", curTrip)
                 showTripViewController.trip = curTrip
+//                tripDetailsViewController.curTrip = curTrip
+
             }
         }
     }
@@ -41,6 +45,7 @@ class TripsViewController: UITableViewController {
         // update the tableView
         let indexPath = IndexPath(row: 0, section: 0)
         tableView.insertRows(at: [indexPath], with: .automatic)
+        print("tripList:", tripList)
     }
     
 
