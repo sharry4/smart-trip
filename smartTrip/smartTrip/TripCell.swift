@@ -22,13 +22,13 @@ class TripCell: UITableViewCell {
             
             destinationLabel.text = trip.destination
             durationLabel.text = trip.depDate! + " - " + trip.backDate!
-            tripImageView.image = trip.bgImage
+            tripImageView.image = trip.bgImage 
         }
     }
     
     func image(forBackground trip: String) -> UIImage? {
-        let imageName = "default"
-        return UIImage(named: imageName)
+       // let imageName = "default"
+        return UIImage(named: "default")
     }
 
     override func awakeFromNib() {

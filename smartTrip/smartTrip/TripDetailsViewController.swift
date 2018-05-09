@@ -36,7 +36,6 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
     
     
     @IBOutlet weak var destPhoto: UIImageView!
-    
     @IBOutlet weak var destTF: UITextField!
     @IBOutlet weak var leaveDate: UIDatePicker!
     @IBOutlet weak var retDate: UIDatePicker!
@@ -45,15 +44,19 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage
         {
             destPhoto.image = image
-        } else
-        {
-            //error
+        } else 
+            {
+        //
+        
         }
         
         self.dismiss(animated: true, completion: nil)
     }
     
-    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        
+        dismiss(animated: true, completion: nil)
+    }
     
     // MARK: - Initializers
     required init?(coder aDecoder: NSCoder) {
@@ -86,8 +89,11 @@ class TripDetailsViewController: UITableViewController, UIImagePickerControllerD
         
         let leaveDay = dateFormatter.string(from: leaveDate.date)
         let returnDay = dateFormatter.string(from: retDate.date)
-        let bgImage = destPhoto.image
         
+       let bgImage = destPhoto.image
+        
+ 
+    
  
         
         trip = Trip(destination: tripName, depDate: leaveDay, backDate: returnDay, bgImage: bgImage, notes:tripNotes)
